@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('update introducion profile')
+        .setName('update-introducion-profile')
         .setDescription('Update introduction profile (people who changed profile).'),
 
     async execute(interaction) {
