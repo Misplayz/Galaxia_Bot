@@ -1,4 +1,3 @@
-// youtubeAPI.js
 const axios = require('axios');
 const apiKey = process.env.apiKey;
 
