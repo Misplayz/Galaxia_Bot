@@ -44,47 +44,6 @@ for (const file of eventFiles) {
     }
 }
 
-// Event handler for interactionCreate event
-client.on('interactionCreate', async interaction => {
-    if (!interaction.isModalSubmit()) return;
-
-    // Check if the submitted modal is the introduction modal
-    if (interaction.customId === 'introduceModal') {
-        const nickname = interaction.fields.getTextInputValue('nicknameInput');
-        const age = interaction.fields.getTextInputValue('ageInput');
-        const gender = interaction.fields.getTextInputValue('genderInput');
-
-        const taggedUser = interaction.user.toString();
-        const messageContent = `${taggedUser}`;
-        const indEmbed = new EmbedBuilder()
-            .setTitle('Introduction has been confirmed.✅')
-            .setColor('#00FFFF')
-            .addFields(
-                { name: 'Nickname', value: nickname },
-                { name: 'Age', value: age },
-                { name: 'Gender', value: gender }
-            )
-            .setThumbnail(interaction.user.displayAvatarURL({ dynamic: true }))
-            .setTimestamp();
-
-        const targetChannel = interaction.guild.channels.cache.get('1243918701749866630');
-        if (targetChannel) {
-            await targetChannel.send({ content: messageContent, embeds: [indEmbed] });
-
-            // Add new role and remove old role
-            const member = await interaction.guild.members.fetch(interaction.user);
-            const newRole = interaction.guild.roles.cache.get('1243914187747627008');
-            const oldRole = interaction.guild.roles.cache.get('1243913819580010536');
-
-            if (newRole) await member.roles.add(newRole);
-            if (oldRole) await member.roles.remove(oldRole);
-
-        } else {
-            console.log('Target channel not found.');
-        }
-    }
-});
-
 (async () => {
     try {
         const accessToken = await getAccessToken();
