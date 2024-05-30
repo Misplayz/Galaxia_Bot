@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require('discord.js');
+const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -10,12 +10,12 @@ module.exports = {
         try {
             // Check if the bot is in the correct channel
             if (interaction.channelId !== '1243909129786097744') {
-                await interaction.reply({ content: `This command cannot use in this channel.`, ephemeral: true });
+                await interaction.reply({ content: `This command cannot be used in this channel.`, ephemeral: true });
                 return;
             }
         
-        // Check if interaction has already been replied to or deferred
-        if (interaction.replied || interaction.deferred) return;
+            // Check if interaction has already been replied to or deferred
+            if (interaction.replied || interaction.deferred) return;
 
             // Create the modal
             const modal = new ModalBuilder()
