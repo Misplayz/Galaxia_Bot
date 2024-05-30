@@ -57,6 +57,9 @@ module.exports = {
                 } else {
                     console.log('Target channel not found.');
                 }
+
+                // Reply to close the modal
+                await interaction.reply({ content: 'Your introduction has been submitted successfully!', ephemeral: true });
             }
         }
     },
