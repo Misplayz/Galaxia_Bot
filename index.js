@@ -8,10 +8,10 @@ const { Client, Collection, GatewayIntentBits, ModalBuilder, TextInputStyle, Tex
 const getAccessToken = require('./spotify/spotify_access');
 const deployCommands = require('./deploy-commands');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates] });
-
 // Import and use keep_alive.js
 require('./keep_alive');
+
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates] });
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
